@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebDTDD.Models.LienHe>
+
+@{
+    ViewBag.Title = "ListLH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Part5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <!--Bootstrap Table using .table-bordered class-->
+        <table class="table table-bordered">
+            <thead style="background: #007acc">
+                <tr style="color:aliceblue">
+                    <th><strong>Họ Tên</strong></th>
+                    <th><strong>Gmail</strong></th>
+                    <th><strong>Yêu Cầu</strong></th>
+                    <th><strong>Ngày gửi</strong></th>
+                    <th><strong>Tùy chọn</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr style="color: black">
+                    <td>@item.HoTen</td>
+                    <td>@item.Gmail</td>
+
+                    <td>@item.YeuCau</td>
+                    <td>@String.Format("{0:dd/MM/yyyy}", item.NgayLH)</td>
+                    <td>
+                        <a href="@Url.Action("DeleteLH","Admin",new { id = item.idLH })" style="color:#ff0000"><i class="bi bi-trash3-fill"> Xóa</i> </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+
+    </div>
+    </table>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>

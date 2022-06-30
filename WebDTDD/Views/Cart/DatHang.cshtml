@@ -1,0 +1,134 @@
+﻿@model IEnumerable<WebDTDD.Models.Giohang>
+@using WebDTDD.Models
+@{
+    ViewBag.Title = "DatHang";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    NguoiDung kh = (NguoiDung)Session["TaiKhoan"];
+}
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>ĐẶT HÀNG</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End Page title area -->
+
+<div class="container">
+    <div class="col-lg-12">
+        <form method="post" action="@Url.Action("DatHang","Cart")">
+            <table cellspacing="0" class="shop_table cart">
+                <thead>
+                    <tr>
+                        <th class="product-remove">&nbsp;</th>
+                        <th class="product-thumbnail">&nbsp;</th>
+                        <th class="product-name">Tên sản phẩm</th>
+                        <th class="product-price">Giá</th>
+                        <th class="product-quantity">Số lượng</th>
+                        <th class="product-subtotal">Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr class="cart_item">
+                        <td class="product-remove">
+                            <a title="Remove this item" class="remove" href="@Url.Action("XoaGioHang", "Cart", new { @id = item.idsp})">×</a>
+                        </td>
+
+                        <td class="product-thumbnail">
+                            <a href="single-product.html"><img width="145" height="145" alt="poster_1_up" class="shop_thumbnail" src="@item.hinh"></a>
+                        </td>
+
+                        <td class="product-name">
+                            <a href="single-product.html">@item.tensp - @item.bonho</a>
+                        </td>
+
+                        <td class="product-price">
+                            <span class="amount">@String.Format("{0:0,0đ}", item.gia.Value)</span>
+                        </td>
+                        @using (Html.BeginForm("CapnhatGioHang", "Cart", new { @id = item.idsp }))
+                        {
+                            <td class="product-quantity">
+                                <div class="quantity buttons_added">
+                                    <input type="button" class="minus" value="-">
+                                    <input type="number" class="input-text qty text" name="txtSoLg" value="@item.sl" min="0" step="1">
+                                    <input type="button" class="plus" value="+">
+
+                                </div>
+                            </td>
+
+                            <td class="product-subtotal">
+                                <span class="amount">@String.Format("{0:0,0đ}", item.thanhtien.Value)</span>
+                            </td>
+                            <td><input type="submit" value="Cập nhật" class="btn btn-success" /></td>
+
+                        }
+                        
+                    </tr>
+                    }
+                <tr>                   
+                    <td class="actions" colspan="6">
+                        <input type="submit" value="Đặt hàng" class="checkout-button button alt wc-forward">
+                    </td>
+                </tr>
+                   
+
+                    <table align="center">
+                        <h1 style="text-align:left"> Thông tin đặt hàng</h1>
+                        <br />
+
+                        @using (Html.BeginForm("DatHang", "Cart"))
+                        {
+                            @Html.ValidationSummary(true)
+
+                            <tr style="height:50px">
+
+                                <td>Họ tên khách hàng: </td>
+                                <td style="font-weight:bold">@kh.TenUser</td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>Gmail: </td>
+                                <td style="font-weight:bold">@kh.Gmail</td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>Số điện thoại: </td>
+                                <td style="font-weight:bold">@kh.SDT</td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>Địa chỉ: </td>
+                                <td style="font-weight:bold">
+                                    <input type="text" name="DiaChi" />
+                                </td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>Ngày mua: </td>
+                                <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+                            </tr>
+                            <tr style="height:50px">
+                                <td>Ngày giao:</td>
+                                <td style="font-weight:bold">
+                                    <input type="date" name="NgayGiao" />
+                                </td>
+                            </tr>
+                            <td style="font-weight:bold">                               
+                                    <button class="btn btn-danger flex-shrink-0" type="submit" style="width: 300px">
+                                        <i class="bi bi-check-circle" style="font-size: 15px"></i>
+                                        <strong style="font-size:14px">Xác nhận thanh toán</strong>
+                                    </button>
+                                   
+                            </td>
+                        }
+                    </table>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+         
+

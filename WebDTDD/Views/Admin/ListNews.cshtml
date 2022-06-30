@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebDTDD.Models.TinTuc>
+
+@{
+    ViewBag.Title = "ListNews";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Part5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="@Url.Action("CreateNews", "Admin")">
+            <button class="btn btn-warning flex-shrink-0" type="button">
+
+                <strong style="font-size:14px">Thêm bài viết</strong>
+            </button>
+        </a>
+        <!--Bootstrap Table using .table-bordered class-->
+        <table class="table table-bordered">
+            <thead style="background: #007acc">
+                <tr style="color:aliceblue">
+                    <th><strong>Tiêu đề</strong></th>
+                    <th><strong>Ngày đăng</strong></th>
+                    <th><strong>Tùy chọn</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="color: black">
+                        <td>@item.TieuDeTT</td>
+                        <td>@String.Format("{0:dd/MM/yyyy}", item.NgayDangTT)</td>
+                        <td>
+                            <a href="@Url.Action("DeleteNews","Admin",new { id = item.MaTT })" style="color:#ff0000"><i class="bi bi-trash3-fill"> Xóa</i> </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>

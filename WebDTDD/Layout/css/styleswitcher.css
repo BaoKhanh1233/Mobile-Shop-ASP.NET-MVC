@@ -1,0 +1,54 @@
+@import "../plugins/colorpicker/colorpicker.css";
+#styleswitcher{
+	width:265px;
+	position:fixed;
+	top:223px;
+	left:0;
+	padding:17px 20px;
+	z-index:11;
+	-webkit-transition-property:-webkit-transform;
+	-webkit-transition-timing-function: ease;
+	-webkit-transition-duration: .5s;
+	-moz-transition-property:transform;
+	-moz-transition-timing-function: ease;
+	-moz-transition-duration: .5s;
+	-o-transition-property:transform;
+	-o-transition-timing-function: ease;
+	-o-transition-duration: .5s;
+	transition-property:transform;
+	transition-timing-function: ease;
+	transition-duration: .5s;
+	-webkit-backface-visibility:hidden;
+}
+#styleswitcher.closed{
+	-webkit-transform:translateX(-100%);
+	-moz-transform:translateX(-100%);
+	-o-transform:translateX(-100%);
+	-ms-transform:translateX(-100%);
+	transform:translateX(-100%);
+}
+#open_switcher{
+	width:40px;
+	height:40px;
+	position:absolute;
+	right:-40px;
+	top:0;
+	font-size:1.28em;
+}
+.bgpicker_wrap{
+	border:1px solid #e5e5e5;
+	padding:3px;
+}
+#cpicker,[data-bg]{
+	width:28px;
+	height:28px;
+	background-size:cover;
+}
+.layout_button{
+	padding:10px 15px 9px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:0){
+	#open_switcher i[class^="fa "]{
+		margin-top:0px;
+	}
+}

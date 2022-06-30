@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebDTDD.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "Ban";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Part5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+    
+
+    <div class="container">
+        <!--Bootstrap Table using .table-bordered class-->
+        <table class="table table-bordered">
+            <thead style="background: #007acc">
+                <tr style="color:aliceblue">
+                    <th><strong>Tên người dùng</strong></th>
+                    <th><strong>Tài khoản</strong></th>
+                    <th><strong>Gmail</strong></th>
+                    <th><strong>Số điện thoại</strong></th>
+                    <th><strong>Quyền đăng nhập</strong></th>
+                    <th><strong>Tùy chọn</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="color: black">
+                        <td>@item.TenUser</td>
+                        <td>@item.TaiKhoan</td>
+                        <td>@item.Gmail</td>
+                        <td>@item.SDT</td>
+                        <td>
+                            @if (@item.QuyenDN == true)
+                            {
+                                <p>Người dùng</p>
+                            }
+                            else
+                            {
+                                <p>Quản trị viên</p>
+                            }
+                        </td>
+                        <td>                           
+                             <a href="@Url.Action("RestoreUser","Admin",new { id = item.IdUser })"><i class="bi bi-person-x-fill" style="color:#ffca2c"> Khôi phục User</i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>

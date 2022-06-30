@@ -1,0 +1,64 @@
+﻿@model WebDTDD.Models.TinTuc
+
+@{
+    ViewBag.Title = "DeleteNews";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa tin tức</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tiêu đề 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TieuDeTT)
+        </dd>
+
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungTT)
+        </dd>
+
+        <dt>
+            Hình tin tức
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhTT)
+        </dd>
+
+        <dt>
+            Ngày đăng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDangTT)
+        </dd>
+
+    </dl>
+
+    <h3>Xóa tin tức này ?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <a href="@Url.Action("ListNews", "Admin")">
+                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+
+                    <strong style="font-size:14px">Quay lại</strong>
+                </button>
+            </a> |
+            <input type="submit" value="Xóa bài viết" class="btn btn-outline-danger" />
+        </div>
+    }
+</div>

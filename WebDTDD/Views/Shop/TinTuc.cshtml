@@ -1,0 +1,105 @@
+﻿@model IEnumerable<WebDTDD.Models.TinTuc>
+@{
+    ViewBag.Title = "TinTuc";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Tin tức</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Responsive HTML5 Template" />
+
+    
+    <link rel="apple-touch-icon" sizes="57x57" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../s3.amazonaws.com/weblionmedia-spectr/img/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="https://s3.amazonaws.com/weblionmedia-spectr/img/favicon/manifest.json" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic%7CInconsolata:400,700%7CMontserrat:400,700' rel='stylesheet' type='text/css' />
+
+    <link rel="stylesheet" href="~/Layout2/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/Layout2/css/linecons.css" />
+    <link rel="stylesheet" href="~/Layout2/css/fontello.css" />
+
+    
+    <link rel="stylesheet" href="~/Layout2/css/jquery-ui.css" />
+    <link rel="stylesheet" href="~/Layout2/css/jquery-ui.structure.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/animate.~/Layout2/css/animate.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/owl-carousel/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/owl-carousel/owl-carousel/owl.transitions.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/Swiper/dist/~/Layout2/css/swiper.css" />
+    <link rel="stylesheet" href="~/Layout2/vendor/magnific-popup/dist/magnific-popup.css" />
+
+   
+    <link rel="stylesheet" href="~/Layout2/css/main.css" />
+
+</head>
+<div class="container">
+    <div class="row">
+        <div class="content">
+            <div class="pst-block">
+                <div class="pst-block-main">
+                    <div class="col-row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-half">
+                                <article class="post post-tp-8">
+                                    <figure>
+                                        <a href="@item.NoiDungTT">
+                                            <img src="@item.HinhTT" height="670" width="345" alt="Spectr News Theme" class="adaptive" />
+                                        </a>
+                                    </figure>
+                                    <h1 class="title-5"><a href="@item.NoiDungTT">@item.TieuDeTT</a></h1>
+                                    <div class="meta-tp-2">
+                                        <div class="date"><span>@String.Format("{0:dd/MM/yyyy}", item.NgayDangTT)</span></div>
+                                       
+                                    </div>
+                                </article>
+                            </div>
+                        }
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Layout2/vendor/jquery/dist/jquery.js"></script>
+<script src="~/Layout2/js/jquery-ui.js"></script>
+<script src="~/Layout2/vendor/waypoints/lib/jquery.waypoints.js"></script>
+<script src="~/Layout2/vendor/superfish/dist/js/superfish.js"></script>
+<script src="~/Layout2/vendor/magnific-popup/dist/jquery.magnific-popup.js"></script>
+<script src="~/Layout2/vendor/imagesloaded/imagesloaded.pkgd.js"></script>
+<script src="~/Layout2/vendor/owl-carousel/owl-carousel/owl.carousel.js"></script>
+<script src="~/Layout2/vendor/slick-carousel/slick/slick.js"></script>
+<script src="~/Layout2/vendor/Swiper/dist/js/swiper.jquery.js"></script>
+<script src="~/Layout2/vendor/sticky-kit/jquery.sticky-kit.js"></script>
+
+
+<script src="~/Layout2/js/main.js"></script>
+

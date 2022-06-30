@@ -1,0 +1,41 @@
+﻿@model WebDTDD.Models.NguoiDung
+
+@{
+    ViewBag.Title = "DetailUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông tin tài khoản</h2>
+
+
+<h2 class="text-center" style="font-weight:600;margin-bottom:30px; color:orange;">@Html.DisplayFor(model => model.TenUser)</h2>
+<div style="text-align:center;" class="col-sm-12 col=md-12">
+    <div class="caption">
+        <p> <strong>Tên đăng nhập: </strong>@Html.DisplayFor(model => model.TaiKhoan)</p>
+        <p> <strong>Mật khẩu: </strong>@Html.DisplayFor(model => model.MatKhau)</p>
+        <p> <strong>Email:</strong> @Html.DisplayFor(model => model.Gmail)</p>
+        <p><strong>Số điện thoại:</strong> @Html.DisplayFor(model => model.SDT)</p>
+        @if (Model.QuyenDN == true)
+        {
+            <p> <strong>Quyền đăng nhập: </strong> Người dùng</p>
+        }
+        else
+        {
+            <p> <strong>Quyền đăng nhập: </strong> Quản trị viên</p>
+        }
+    </div>
+</div>
+<p>
+    <a href="@Url.Action("TTUser", "Admin")">
+        <button class="btn btn-outline-dark flex-shrink-0" type="button">
+            
+            <strong style="font-size:14px">Quay lại</strong>
+        </button>
+    </a> | 
+    <a href="@Url.Action("EditUser", "Admin",new { @id = Model.IdUser})">
+        <button class="btn btn-outline-info flex-shrink-0" type="button">
+            
+            <strong style="font-size:14px">Sửa thông tin</strong>
+        </button>
+    </a>
+</p>

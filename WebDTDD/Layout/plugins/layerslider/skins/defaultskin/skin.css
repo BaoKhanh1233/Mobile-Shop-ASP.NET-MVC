@@ -1,0 +1,227 @@
+/* LayerSlider Default Skin */
+
+.ls-defaultskin .ls-bottom-nav-wrapper {
+	
+	position:absolute;
+	bottom:-3px;
+	width:100%;
+	left:0;
+	height: auto !important;
+}
+
+.ls-defaultskin .ls-playvideo {
+	width: 50px;
+	height: 50px;
+	margin-left: -25px;
+	margin-top: -25px;
+}
+
+.ls-defaultskin .ls-playvideo,
+.ls-defaultskin .ls-nav-sides,
+.ls-defaultskin .ls-nav-start,
+.ls-defaultskin .ls-nav-stop,
+.ls-defaultskin .ls-fullscreen,
+.ls-defaultskin .ls-loading-container {
+	background-image: url(skin.png);	
+}
+
+.ls-defaultskin .ls-playvideo {
+	background-position: -300px -150px;
+}
+
+.ls-defaultskin .ls-playvideo:hover,
+.ls-defaultskin .ls-vpcontainer:hover .ls-playvideo {
+	background-position: -375px -150px;
+}
+
+.ls-defaultskin .ls-nav-start {
+	background-position: -300px 0px;
+}
+
+.ls-defaultskin .ls-nav-start:hover,
+.ls-defaultskin .ls-nav-start-active {
+	background-position: -300px -75px;
+}
+
+.ls-defaultskin .ls-nav-stop {
+	background-position: -450px 0px;
+}
+
+.ls-defaultskin .ls-nav-stop:hover,
+.ls-defaultskin .ls-nav-stop-active {
+	background-position: -450px -75px;
+}
+
+.ls-defaultskin .ls-nav-sideleft {
+	background-position: -150px -150px;	
+}
+
+.ls-defaultskin .ls-nav-sideright {
+	background-position: -225px -150px;	
+}
+
+
+
+.ls-defaultskin .ls-nav-prev,
+.ls-defaultskin .ls-nav-next {
+	width: 60px;
+	height: 60px;
+	display:block;
+	z-index: 10;
+	color:#fff;
+	text-align: center;
+	border-width:1px !important;
+	border-style:solid !important;
+	border-color:transparent !important;
+	top: 50%;
+	font-size:36px;
+	line-height: 60px !important;
+	margin-top: -30px;	
+	position: absolute;
+	-webkit-transition:border-color .4s ease !important;
+	-moz-transition:border-color .4s ease !important;
+	-o-transition:border-color .4s ease !important;
+	transition:border-color .4s ease !important;
+}
+
+.ls-defaultskin .ls-nav-prev {
+	left: 30px;	
+}
+
+.ls-defaultskin .ls-nav-next {
+	right: 30px;	
+}
+.ls-defaultskin .ls-nav-prev:hover,.ls-defaultskin .ls-nav-next:hover{
+	border-color:#fff !important;
+}
+@media only screen and (-webkit-min-device-pixel-ratio:0){
+	.ls-defaultskin .ls-nav-next [class^="fa "],
+	.ls-defaultskin .ls-nav-prev [class^="fa "]{
+		margin-top:1px;
+	}
+	.ls-defaultskin .ls-nav-prev [class^="fa "]{
+		margin-left:-1px;
+	}
+}
+
+.ls-defaultskin .ls-nav-start,
+.ls-defaultskin .ls-nav-stop,
+.ls-defaultskin .ls-nav-sides {
+	height: 28px;
+}
+
+.ls-defaultskin .ls-bottom-slidebuttons a{
+	width:16px;
+	height:10px;
+	display: block;
+}
+.ls-defaultskin .ls-bottom-slidebuttons a::after{
+	content:"";
+	display: block;
+	background:rgba(255,255,255,0.00001);
+	width:10px;
+	margin:0 auto;
+	height:100%;
+	border:1px solid #fff !important;
+	-webkit-transition: border-color .4s ease,background-color .4s ease !important;
+	-moz-transition: border-color .4s ease,background-color .4s ease !important;
+	-o-transition: border-color .4s ease,background-color .4s ease !important;
+	transition: border-color .4s ease,background-color .4s ease !important;
+}
+.ls-defaultskin .ls-bottom-slidebuttons a.ls-nav-active::after{
+	background:#fff;
+}
+
+.ls-defaultskin .ls-bottom-slidebuttons,
+.ls-defaultskin .ls-bottom-slidebuttons a,
+.ls-defaultskin .ls-nav-start,
+.ls-defaultskin .ls-nav-stop,
+.ls-defaultskin .ls-nav-sides {
+	display: inline-block;
+}
+
+.ls-defaultskin .ls-nav-start,
+.ls-defaultskin .ls-nav-stop {
+	width: 24px;
+}
+
+.ls-defaultskin .ls-thumbnail-hover {
+	bottom: 36px;
+	padding: 4px;
+	margin-left: 1px;
+}
+
+.ls-defaultskin .ls-thumbnail-hover-bg {
+	background: white;
+	box-shadow: 0px 2px 12px -4px black;
+	border-radius: 4px;
+}
+
+.ls-defaultskin .ls-thumbnail-hover span {
+	border: 5px solid white;
+	margin-left: -6px;
+}
+
+
+
+.ls-defaultskin .ls-thumbnail {
+	top: -20px;
+}
+
+.ls-defaultskin .ls-thumbnail-inner {
+	padding: 5px;
+	margin-left: -5px;
+	background: white;
+	box-shadow: 0px 3px 35px -10px black;
+	border-radius: 4px;
+}
+
+.ls-defaultskin .ls-thumbnail-slide a {
+	margin-right: 5px;
+}
+
+.ls-defaultskin .ls-nothumb {
+	background: #eee;
+}
+
+
+
+.ls-defaultskin .ls-above-thumbnails {
+	display: none;
+}
+
+.ls-defaultskin .ls-below-thumbnails {
+	display: block;
+	margin-top: -20px;
+}
+
+
+
+.ls-defaultskin .ls-loading-container {
+	width: 40px;
+	height: 40px;
+	margin-left: -20px;
+	margin-top: -20px;
+	background-position: -450px -150px;	
+}
+
+.ls-defaultskin .ls-loading-indicator {
+	width: 22px;
+	height: 22px;
+	margin-top: 9px;
+	background-image: url(loading.gif);	
+}
+
+
+
+.ls-defaultskin .ls-fullscreen {
+	width: 30px;
+	height: 30px;
+	right: 10px;
+	top: 10px;
+	background-position: -525px -150px;
+}
+
+.ls-defaultskin .ls-fullscreen:hover {
+	background-position: -525px -190px;
+}

@@ -1,0 +1,172 @@
+﻿@model WebDTDD.Models.SanPham
+@using WebDTDD.Models
+@{
+    ViewBag.Title = "ProductDetail";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    NguoiDung kh = (NguoiDung)Session["TaiKhoan"];
+}
+
+
+<div class="product-big-title-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-bit-title text-center">
+                    <h2>Chi tiết sản phẩm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="single-product-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="single-sidebar">
+                    <h2 class="sidebar-title">Bài viết</h2>
+                    <ul>
+                        <li><a href="https://cellphones.com.vn/sforum/samsung-galaxy-z-flip4-lan-dau-lo-anh-thuc-te-khong-co-thay-doi-lon-ve-thiet-ke">Samsung Galaxy Z Flip4 lần đầu lộ ảnh thực tế, không có thay đổi lớn về thiết kế</a></li>
+                        <li><a href="https://cellphones.com.vn/sforum/oppo-k10-5g-ra-mat-mediatek-dimensity-810-sac-nhanh-33w-gia-5-2-trieu-dong">OPPO K10 5G ra mắt: MediaTek Dimensity 810, sạc nhanh 33W, giá 5.2 triệu đồng</a></li>
+                        <li><a href="https://cellphones.com.vn/sforum/he-lo-nhung-thong-tin-quan-trong-dau-tien-ve-xiaomi-redmi-note-12">Hé lộ những thông tin quan trọng đầu tiên về Xiaomi Redmi Note 12</a></li>
+                        <li><a href="https://cellphones.com.vn/sforum/vivo-x80-series-chinh-thuc-ra-mat-tai-viet-nam-vao-ngay-15-6">Vivo X80 series chính thức ra mắt tại Việt Nam vào ngày 15/6</a></li>
+                        <li><a href="https://cellphones.com.vn/sforum/moi-ban-tai-ve-bo-hinh-nen-chat-luong-cao-cua-ios-16">Mời bạn tải về bộ hình nền chất lượng cao của iOS 16</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="product-content-right">
+                    <div class="product-breadcroumb">
+                        <a>Trang chủ</a>
+                        <a>@Model.TenSP - @Model.BoNho</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="product-images">
+                                <div class="product-main-img">
+                                    <img src="@Model.HinhSP1" alt="" width="500">
+                                </div>
+
+                             
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="product-inner">
+                                <h2 class="product-name">@Model.TenSP - @Model.BoNho</h2>
+                                <hr class="nav-divider" />
+
+                                <ul>
+
+                                    <li style="list-style:none ;left:0; font-size:large; color: #000000">
+                                        <strong>Màn hình:</strong> &emsp;&emsp; @Model.ManHinh
+                                    </li>
+                                    <li>
+                                        <p>&emsp;</p>
+                                    </li>
+                                    <hr class="nav-divider" />
+
+                                    <li style="list-style:none ;left:0; font-size:large; color: #000000">
+                                        <strong>Vi xử lý:</strong> &emsp;&emsp; @Model.ViXuLy
+                                    </li>
+                                    <li>
+                                        <p>&emsp;</p>
+                                    </li>
+                                    <hr class="nav-divider" />
+
+                                    <li style="list-style:none ;left:0; font-size:large; color: #000000">
+                                        <strong>Số lượng:</strong> &emsp;&emsp; @Model.SLTon
+                                    </li>
+                                    <li>
+                                        <p>&emsp;</p>
+                                    </li>
+                                </ul>
+                                <hr class="nav-divider" />
+                                <p>&emsp;</p>
+                                <div class="product-inner-price">
+                                    <ins> <h4><strong style="color:#000000"> Giá:</strong> &emsp;&emsp; @String.Format("{0:0,0đ}", Model.GiaSP.Value)</h4></ins>
+                                </div>
+
+                                @if (kh != null)
+                                {
+                                    if (Model.SLTon > 0)
+                                    {
+                                        <form action="" class="cart">
+                                            <div class="quantity">
+                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                            </div>
+                                            <a href="@Url.Action("ThemGioHang", "Cart", new { @id = Model.IdSP, @strURL = Request.Url.ToString() })"> <button class="add_to_cart_button" type="button"> Thêm vào giỏ hàng </button> </a>
+
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <form action="" class="cart">
+                                            <div class="quantity">
+                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                            </div>
+                                            <button class="add_to_cart_button" type="button">Hết Hàng</button>
+                                        </form>
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    <form action="" class="cart">
+                                        <div class="quantity">
+                                            <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                                        </div>
+                                        <a href="@Url.Action("DangNhap", "User", new { @id = Model.IdSP, @strURL = Request.Url.ToString() })"> <button class="add_to_cart_button" type="button"> Thêm vào giỏ hàng </button> </a>
+                                    </form>
+                                }
+
+
+
+                                <div role="tabpanel">
+                                    <ul class="product-tab" role="tablist">
+                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Thông tin sản phẩm</a></li>
+                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Đánh giá</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade in active" id="home">
+                                            <p> @Model.MoTaSP</p>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                                            <h2>Đánh giá</h2>
+                                            <div class="submit-review">
+                                                <p><label for="name">Name</label> <input name="name" type="text"></p>
+                                                <p><label for="email">Email</label> <input name="email" type="email"></p>
+                                                <div class="rating-chooser">
+                                                    <p>Your rating</p>
+
+                                                    <div class="rating-wrap-post">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
+                                                <p><input type="submit" value="Submit"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

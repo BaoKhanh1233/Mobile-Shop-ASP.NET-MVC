@@ -1,0 +1,65 @@
+﻿@model WebDTDD.Models.LienHe
+
+@{
+    ViewBag.Title = "DeleteLH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa liên hệ</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            Gmail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gmail)
+        </dd>
+
+        <dt>
+           Yêu cầu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YeuCau)
+        </dd>
+
+        <dt>
+            Ngày gửi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayLH)
+        </dd>
+
+    </dl>
+
+    <h3>Xóa liên hệ này ?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <a href="@Url.Action("ListLH", "Admin")">
+                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+
+                    <strong style="font-size:14px">Quay lại</strong>
+                </button>
+            </a> |
+            <input type="submit" value="Xóa liên hệ" class="btn btn-outline-danger" />
+        </div>
+    }
+</div>
+

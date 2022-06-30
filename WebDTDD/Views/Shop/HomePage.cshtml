@@ -1,0 +1,379 @@
+﻿
+@model IEnumerable<WebDTDD.Models.SanPham>
+@using WebDTDD.Models
+@{
+    ViewBag.Title = "HomePage";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    NguoiDung kh = (NguoiDung)Session["TaiKhoan"];
+
+}
+<div class="slider-area">
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            <li>
+                <img src="~/Content/img/banner iphone1.jpg" alt="Slide">
+
+            </li>
+
+            <li>
+                <img src="~/Content/img/banner vivo.jpg" alt="Slide">
+            </li>
+            <li>
+                <img src="~/Content/img/banner-oppo.jpg" alt="Slide">
+            </li>
+            <li>
+                <img src="~/Content/img/210208-xiaomi-mi-11-01_resize.jpg" alt="Slide">
+            </li>
+            <li>
+                <img src="~/Content/img/banner samsung.jpg" alt="Slide">
+            </li>
+        </ul>
+    </div>
+    <!-- ./Slider -->
+</div> <!-- End slider area -->
+
+<div class="maincontent-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="brands-area">
+                    <div class="zigzag-bottom"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="brand-wrapper">
+                                    <div class="brand-list">
+                                        <img src="~/Content/img/logoapple.png" alt="">
+                                        <img src="~/Content/img/logosamsung.png" alt="">
+                                        <img src="~/Content/img/logoXiaomi.png" alt="">
+                                        <img src="~/Content/img/logoOPPO.png" alt="">
+                                        <img src="~/Content/img/logoVivo.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End brands area -->
+                <div class="latest-product">
+                    <h4 class="section-title">Apple</h4>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNSX == 1)
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="@item.HinhSP1" alt="Loi">
+                                        <div class="product-hover">
+                                            @if (kh == null)
+                                            {
+                                                <a href="@Url.Action("DangNhap", "User", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ThemGioHang", "Cart", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+
+                                            <a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})">@item.TenSP - @item.BoNho</a></h2>
+                                    <div class="product-carousel-price" style="color: orangered">
+                                        <ins>@String.Format("{0:0,0đ}", item.GiaSP.Value)</ins> <del></del>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="latest-product">
+                    <h4 class="section-title">SamSung</h4>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNSX == 2)
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="@item.HinhSP1" alt="Loi">
+                                        <div class="product-hover">
+                                            @if (kh == null)
+                                            {
+                                                <a href="@Url.Action("DangNhap", "User", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ThemGioHang", "Cart", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            <a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})">@item.TenSP - @item.BoNho</a></h2>
+                                    <div class="product-carousel-price" style="color: orangered">
+                                        <ins>@String.Format("{0:0,0đ}", item.GiaSP.Value)</ins>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="latest-product">
+                    <h4 class="section-title">Xiaomi</h4>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNSX == 3)
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="@item.HinhSP1" alt="Loi">
+                                        <div class="product-hover">
+                                            @if (kh == null)
+                                            {
+                                                <a href="@Url.Action("DangNhap", "User", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ThemGioHang", "Cart", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            <a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})">@item.TenSP - @item.BoNho</a></h2>
+                                    <div class="product-carousel-price" style="color: orangered">
+                                        <ins>@String.Format("{0:0,0đ}", item.GiaSP.Value)</ins>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="latest-product">
+                    <h4 class="section-title">Oppo</h4>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNSX == 4)
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="@item.HinhSP1" alt="Loi">
+                                        <div class="product-hover">
+                                            @if (kh == null)
+                                            {
+                                                <a href="@Url.Action("DangNhap", "User", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ThemGioHang", "Cart", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            <a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})">@item.TenSP - @item.BoNho</a></h2>
+                                    <div class="product-carousel-price" style="color: orangered">
+                                        <ins>@String.Format("{0:0,0đ}", item.GiaSP.Value)</ins>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="latest-product">
+                    <h4 class="section-title">ViVo</h4>
+                    <div class="product-carousel">
+                        @foreach (var item in Model)
+                        {
+                            if (item.MaNSX == 5)
+                            {
+                                <div class="single-product">
+                                    <div class="product-f-image">
+                                        <img src="@item.HinhSP1" alt="Loi">
+                                        <div class="product-hover">
+                                            @if (kh == null)
+                                            {
+                                                <a href="@Url.Action("DangNhap", "User", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("ThemGioHang", "Cart", new { @id = item.IdSP, @strURL = Request.Url.ToString() })" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>Giỏ Hàng</a>
+                                            }
+                                            <a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})" class="view-details-link"><i class="fa fa-link"></i> Chi tiết</a>
+                                        </div>
+                                    </div>
+
+                                    <h2><a href="@Url.Action("ProductDetail", "Shop", new { @id = item.IdSP})">@item.TenSP - @item.BoNho</a></h2>
+                                    <div class="product-carousel-price" style="color: orangered">
+                                        <ins>@String.Format("{0:0,0đ}", item.GiaSP.Value)</ins>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End main content area -->
+
+<div class="product-widget-area">
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Sản phẩm bán chạy</h2>
+
+                    <div class="single-wid-product">
+                        <img src="/Content/img/Ip13-1.jpg" alt="" class="product-thumb">
+                        <h2>Iphone 13 pro</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>18.000.000đ</ins>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="/Content/img/SS Galaxy M51-1.jpg" alt="" class="product-thumb">
+                        <h2>Samsung Galaxy M51</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>6.300.000đ</ins>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/OP Reno5-1.jpg" alt="" class="product-thumb">
+                        <h2>OPPO Reno5 5G</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>8.500.000đ</ins>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Sản phẩm mới</h2>
+
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/Ip14 mini-1.jpg" alt="" class="product-thumb">
+                        <h2>Iphone 14 mini</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>20.000.000đ</ins>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/V V21-1.jpg" alt="" class="product-thumb">
+                        <h2>Vivo V21 5G</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>8.000.000đ</ins>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/SS Galaxy Z Flip3-2.jpg" alt="" class="product-thumb">
+                        <h2>Samsung Galaxy Z Flip3 5G</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>21.000.000đ</ins>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-product-widget">
+                    <h2 class="product-wid-title">Sản phẩm giảm giá</h2>
+
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/OP Reno7 Z-1.jpg" alt="" class="product-thumb">
+                        <h2>OPPO Reno7</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>10.000.000đ</ins> <del>13.000.000đ</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/SS Galaxy S22-1.jpg" alt="" class="product-thumb">
+                        <h2>Samsung Galaxy S22 5G</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>21.000.000đ</ins> <del>25.000.000đ</del>
+                        </div>
+                    </div>
+                    <div class="single-wid-product">
+                        <img src="~/Content/img/OP Find X5-1.jpg" alt="" class="product-thumb">
+                        <h2>OPPO Find X5 Pro</h2>
+                        <div class="product-wid-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product-wid-price">
+                            <ins>15.000.000đ</ins> <del>19.000.000đ</del>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End product widget area -->

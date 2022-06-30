@@ -1,0 +1,78 @@
+﻿@model IEnumerable<WebDTDD.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "TTUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Part5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <a href="@Url.Action("CreateUser", "Admin")">
+            <button class="btn btn-warning flex-shrink-0" type="button">
+
+                <strong style="font-size:14px">Thêm tài khoản</strong>
+            </button>
+        </a>
+        <p>
+
+        </p>
+        <!--Bootstrap Table using .table-bordered class-->
+        <table class="table table-bordered">
+            <thead style="background: #007acc">
+                <tr style="color:aliceblue">
+                    <th><strong>Tên User</strong></th>
+                    <th><strong>Tài khoản</strong></th>
+                    <th><strong>Gmail</strong></th>
+                    <th><strong>Số điện thoại</strong></th>
+                    <th><strong>Quyền đăng nhập</strong></th>
+                    <th><strong>Tùy chọn</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="color: black">
+                        <td>@item.TenUser</td>
+                        <td>@item.TaiKhoan</td>
+                        <td>@item.Gmail</td>
+                        <td>@item.SDT</td>
+                        <td>
+                            @if (@item.QuyenDN == true)
+                            {
+                                <p>Người dùng</p>
+                            }
+                            else
+                            {
+                                <p>Quản trị viên</p>
+                            }
+                        </td>
+                        <td>
+                            @if (@item.QuyenDN == true)
+                            {
+                                <a href="@Url.Action("DeleteUser","Admin",new { id = item.IdUser })"><i class="bi bi-person-x-fill" style="color:#ff0000"> Khóa người dùng</i></a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("EditUser","Admin",new { id = item.IdUser })" style="color:green"><i class="bi bi-person-lines-fill"> Chỉnh sửa</i> </a>
+                                <p> </p>
+                                <a href="@Url.Action("DetailUser","Admin",new { id = item.IdUser })" style="color:#007acc"><i class="bi bi-eye-fill"> Chi tiết</i> </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>

@@ -1,0 +1,17 @@
+.divider_bg{
+	overflow:visible;
+}
+.owl-item:last-child{
+	margin-right:0px !important;
+}
+.royalslider{
+	z-index:1;
+}
+.quantity input[type="text"]{
+	width:30px;
+}
+.quantity.type_2 > input[type="text"]{
+	min-height: 0px;
+	height:28px;
+	padding:0;
+}

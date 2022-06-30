@@ -1,0 +1,74 @@
+﻿@model WebDTDD.Models.NguoiDung
+
+@{
+    ViewBag.Title = "RestoreUser";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Khôi phục tài khoản</h2>
+<div>
+
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên người dùng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenUser)
+        </dd>
+
+        <dt>
+            Tài khoản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiKhoan)
+        </dd>
+
+        <dt>
+           Mật khẩu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MatKhau)
+        </dd>
+
+        <dt>
+           Gmail
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gmail)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+
+
+
+    </dl>
+
+    <h3>Xóa tài khoản này ?</h3>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions">
+            <a href="@Url.Action("Ban", "Admin")">
+                <button class="btn btn-outline-dark flex-shrink-0" type="button">
+
+                    <strong style="font-size:14px">Quay lại</strong>
+                </button>
+            </a> |
+            <input type="submit" value="Khôi Phục User" class="btn btn-outline-warning" />
+        </div>
+    }
+</div>

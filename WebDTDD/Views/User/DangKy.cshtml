@@ -1,0 +1,86 @@
+﻿@model WebDTDD.Models.NguoiDung
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h2 style="margin-top: 20px; margin-left:45%">Đăng ký</h2>
+            <hr />
+            <br />
+            <h3 class="text-center" style="font-weight:600;margin-bottom:30px; color:red;">@ViewBag.ThongBao</h3>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group" style="margin-left:30%">
+                @Html.LabelFor(model => model.TenUser, "Tên người dùng", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.TenUser, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenUser, "", new { @class = "text-danger" })
+                    @ViewData["Loi1"]
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left: 30%">
+                @Html.LabelFor(model => model.TaiKhoan, "Tài khoản", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.TaiKhoan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                    @ViewData["Loi2"]
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left: 30%">
+                @Html.LabelFor(model => model.MatKhau, "Mật khẩu", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                    @ViewData["Loi3"]
+                </div>
+            </div>
+            <div class="form-group" style="margin-left: 30%">
+                <label class="control-label col-md-2 " for="MatKhauXacNhan">
+                    Mật khẩu xác nhận
+                </label>
+                <div class="col-md-10" style="width: 20%">
+                    <input class="form-control text-box single-line input-validation-error"
+                           data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
+                           id="MatKhauXacNhan" name="MatKhauXacNhan" type="password" value="" aria-
+                           describedby="MatKhauXacNhan-error" aria-invalid="true">
+
+                    @ViewData["NhapMKXN"]
+                    @ViewData["MatKhauGiongNhau"]
+                </div>
+            </div>
+            <div class="form-group" style="margin-left: 30%">
+                @Html.LabelFor(model => model.Gmail, "Gmail", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Gmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Gmail, "", new { @class = "text-danger" })
+                    @ViewData["Loi4"]
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-left: 30%">
+                @Html.LabelFor(model => model.SDT, "Điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                    @ViewData["Loi5"]
+                </div>
+            </div>
+
+
+
+            <div class="form-group" style="margin-left: 30%">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng ký" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

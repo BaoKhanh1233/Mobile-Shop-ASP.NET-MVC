@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebDTDD.Models.DonHang>
+
+@{
+    ViewBag.Title = "Bill";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Bill</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TongTien)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongTien)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaDH }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaDH }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaDH })
+            </td>
+        </tr>
+    }
+
+</table>

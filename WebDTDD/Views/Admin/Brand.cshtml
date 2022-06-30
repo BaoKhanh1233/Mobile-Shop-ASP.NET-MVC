@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebDTDD.Models.NSX>
+
+@{
+    ViewBag.Title = "Brand";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Bootstrap Part5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <div class="container">
+        <!--Bootstrap Table using .table-bordered class-->
+        <table class="table table-bordered">
+            <thead style="background: #007acc">
+                <tr style="color:aliceblue">
+                    <th><strong>Mã NSX</strong></th>
+                    <th><strong>Tên NSX</strong></th>
+                    <th><strong>Logo</strong></th>
+                    <th><strong>Tùy chọn</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="color: black">
+                        <td>@item.MaNSX</td>
+                        <td>@item.TenNSX</td>
+                        <td>@item.Logo</td>
+                        <td>
+                            <a href="@Url.Action("EditBrand","Admin",new { id = item.MaNSX })" style="color:green"><i class="bi bi-info-circle-fill"> Chỉnh sửa</i> </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+
